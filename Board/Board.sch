@@ -1331,7 +1331,7 @@ Allows current flow in one direction, but allows reverse flow when above breakdo
 </device>
 </devices>
 </deviceset>
-<deviceset name="RELAY-DPDT" urn="urn:adsk.eagle:component:2338720/2" library_version="16" library_locally_modified="yes">
+<deviceset name="RELAY-DPDT" urn="urn:adsk.eagle:component:2338720/2" locally_modified="yes" library_version="18" library_locally_modified="yes">
 <gates>
 <gate name="C" symbol="K+-" x="-7.62" y="0"/>
 <gate name="S1" symbol="SWITCH-SPDT" x="12.7" y="10.16"/>
@@ -1340,8 +1340,8 @@ Allows current flow in one direction, but allows reverse flow when above breakdo
 <devices>
 <device name="" package="KEMET-UD2">
 <connects>
-<connect gate="C" pin="+" pad="1"/>
-<connect gate="C" pin="-" pad="8"/>
+<connect gate="C" pin="+" pad="8"/>
+<connect gate="C" pin="-" pad="1"/>
 <connect gate="S1" pin="NC" pad="2"/>
 <connect gate="S1" pin="NO" pad="4"/>
 <connect gate="S1" pin="W" pad="3"/>
@@ -22553,6 +22553,7 @@ BF959 corrected 2008.03.06&lt;br&gt;</description>
 <part name="R23" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/2" value="4k7"/>
 <part name="T1" library="transistor" library_urn="urn:adsk.eagle:library:402" deviceset="*-NPN-" device="SOT23-BEC" package3d_urn="urn:adsk.eagle:package:29919/2" technology="BC817-16"/>
 <part name="P+11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="V+" device=""/>
+<part name="R24" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/2" value="100"/>
 </parts>
 <sheets>
 <sheet>
@@ -22730,6 +22731,7 @@ The Regulator can output max 100mA</text>
 <instance part="R23" gate="G$1" x="88.9" y="83.82" rot="R270"/>
 <instance part="T1" gate="G$1" x="66.04" y="279.4"/>
 <instance part="P+11" gate="1" x="68.58" y="289.56"/>
+<instance part="R24" gate="G$1" x="58.42" y="279.4"/>
 </instances>
 <busses>
 </busses>
@@ -23904,10 +23906,16 @@ The Regulator can output max 100mA</text>
 </net>
 <net name="N$42" class="0">
 <segment>
-<pinref part="T1" gate="G$1" pin="B"/>
 <pinref part="555" gate="A" pin="Q"/>
-<wire x1="63.5" y1="279.4" x2="45.72" y2="279.4" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="279.4" x2="45.72" y2="274.32" width="0.1524" layer="91"/>
+<pinref part="R24" gate="G$1" pin="1"/>
+<wire x1="45.72" y1="279.4" x2="53.34" y2="279.4" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$43" class="0">
+<segment>
+<pinref part="T1" gate="G$1" pin="B"/>
+<pinref part="R24" gate="G$1" pin="2"/>
 </segment>
 </net>
 </nets>
